@@ -28,7 +28,7 @@
   font-size: 18px;
   color: #49557e;
   padding: 10px 30px;
-  border: 1px solid tomato;
+  border: 2px solid tomato;
   border-radius: 50px;
   cursor: pointer;
   transition: 0.3s;
@@ -41,5 +41,18 @@
 
 .navbar .active {
   padding-bottom: 2px;
-  border-bottom: 2px solid tomato;
+  border-bottom: 3px solid tomato;
+}
+.navbar-search-icon{
+  position: relative;
+}
+.navbar-search-icon .dot{
+  position: absolute;
+  min-width: 10px;
+  min-height: 10px;
+  background-color: tomato;
+  border-radius: 50%;
+  top: -8px;
+  right: -8px;
+
 }
