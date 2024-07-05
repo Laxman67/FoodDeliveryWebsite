@@ -1,32 +1,32 @@
-import { useState } from 'react';
+import { useContext } from 'react';
 import { assets } from '../../assets/assets';
 import './FoodItem.css';
+import { StoreContext } from '../../context/StoreContext';
 // eslint-disable-next-line react/prop-types
 function FoodItem({ id, name, price, description, image }) {
-  
-  const [itemCount, setItemCount] = useState(0);
-  
+  const { cartItems, addToCart, removeFromCart } = useContext(StoreContext);
+
   return (
     <div className="food-item">
       <div className="food-item-img-container">
         <img src={image} className="food-item-image" alt={name} />
-        {!itemCount ? (
+        {!cartItems[id] ? (
           <img
             className="add"
-            onClick={() => setItemCount((prev) => prev + 1)}
+            onClick={() => addToCart(id)}
             src={assets.add_icon_white}
             alt=""
           />
         ) : (
           <div className="food-item-counter">
             <img
-              onClick={() => setItemCount((prev) => prev - 1)}
+              onClick={() => removeFromCart(id)}
               src={assets.remove_icon_red}
-              alt=""
             />
-            <p>{itemCount}</p>
+            <p>{cartItems[id]}</p>
+            {console.log(cartItems)}
             <img
-              onClick={() => setItemCount((prev) => prev + 1)}
+              onClick={() => addToCart(id)}
               src={assets.add_icon_green}
               alt=""
             />
