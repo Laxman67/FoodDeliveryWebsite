@@ -27,7 +27,7 @@
 
 .header-contents p {
   color: white;
-  font-size: 1vw;
+  font-size: 1.3vw;
 }
 
 .header-contents button {
@@ -40,4 +40,25 @@
   border-radius: 50px;
   transition: 0.2s;
   cursor: pointer;
+}
+
+@media (max-width: 1050px) {
+  .header-contents {
+    max-width: 45%;
+  }
+  .header-contents p {
+    display: none;
+  }
+}
+@media (max-width: 750px) {
+  .header-contents {
+    max-width: 65%;
+  }
+
+  .header-contents p {
+    display: none;
+  }
+  .header-contents button {
+    padding: 2vw 4vw;
+  }
 }
