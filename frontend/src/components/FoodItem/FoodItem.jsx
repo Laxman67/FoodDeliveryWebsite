@@ -10,6 +10,7 @@ function FoodItem({ id, name, price, description, image }) {
     <div className="food-item">
       <div className="food-item-img-container">
         <img src={image} className="food-item-image" alt={name} />
+        {/* !cartItems[id] means that no value wirh item id is present */}
         {!cartItems[id] ? (
           <img
             className="add"
