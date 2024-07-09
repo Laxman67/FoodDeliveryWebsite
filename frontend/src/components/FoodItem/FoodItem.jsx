@@ -5,7 +5,6 @@ import { StoreContext } from '../../context/StoreContext';
 // eslint-disable-next-line react/prop-types
 function FoodItem({ id, name, price, description, image }) {
   const { cartItems, addToCart, removeFromCart } = useContext(StoreContext);
-
   return (
     <div className="food-item">
       <div className="food-item-img-container">
@@ -25,7 +24,7 @@ function FoodItem({ id, name, price, description, image }) {
               src={assets.remove_icon_red}
             />
             <p>{cartItems[id]}</p>
-            {console.log(cartItems)}
+
             <img
               onClick={() => addToCart(id)}
               src={assets.add_icon_green}
