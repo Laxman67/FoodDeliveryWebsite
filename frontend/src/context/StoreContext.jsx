@@ -1,4 +1,4 @@
-import { createContext, useEffect } from 'react';
+import { createContext } from 'react';
 
 // Data to Pass
 import { food_list } from '../assets/assets';
@@ -23,14 +23,25 @@ const StoreContextProvider = (props) => {
     setCartItems({ ...cartItems, [itemId]: cartItems[itemId] - 1 });
   };
 
+  let getCartTotalAmount = () => {
+    let totalAmount = 0;
+    for (const item in cartItems) {
+      if (cartItems[item] > 0) {
+        let itemInfo = food_list.find((product) => product._id === item);
+        totalAmount += itemInfo.price * cartItems[item];
+      }
+    }
+    return totalAmount;
+  };
+
   let contextValue = {
     food_list,
     cartItems,
     setCartItems,
     addToCart,
     removeFromCart,
+    getCartTotalAmount,
   };
-  useEffect(() => {}, [cartItems]);
 
   return (
     <StoreContext.Provider value={contextValue}>
