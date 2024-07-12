@@ -16,7 +16,9 @@ configDotenv();
 connectDB();
 
 // API End-Points
-app.use("/api/food",foodRouter)
+app.use('/api/food', foodRouter);
+// Exposing uplods folder to `http://localhost/images/xxxxx.png`
+app.use('/images', express.static('uploads'));
 
 // Routes
 app.get('/', (req, res) => {
