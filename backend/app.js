@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import { connectDB } from './config/DB.js';
 import { configDotenv } from 'dotenv';
+import foodRouter from './routes/foodRoute.js';
 
 // App Configuration
 const app = express();
@@ -13,6 +14,9 @@ configDotenv();
 
 // DB Connection
 connectDB();
+
+// API End-Points
+app.use("/api/food",foodRouter)
 
 // Routes
 app.get('/', (req, res) => {
