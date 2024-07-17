@@ -22,10 +22,11 @@ const addFood = async (req, res) => {
 
     res
       .status(401)
-      .json({ success: false, message: 'Error Occured while Food adding !' });
+      .json({ success: false, message: 'Error Occured while  adding Food !' });
   }
 };
 
+// List all food item
 const listFood = async (req, res) => {
   try {
     const foods = await FoodModel.find({});
@@ -38,4 +39,20 @@ const listFood = async (req, res) => {
   }
 };
 
-export { addFood, listFood };
+// Remove Food Item
+
+const removeFood = async (req, res) => {
+  try {
+    let food = await FoodModel.findById(req.body.id);
+    fs.unlink(`uploads/${food.image}`, () => {});
+    await FoodModel.findByIdAndDelete(req.body.id);
+    res.status(200).json({ success: true, message: 'Food Removed!' });
+  } catch (error) {
+    console.log(`Error => ${error}`);
+    res.status(404).json({
+      success: false,
+      message: 'Food not found!',
+    });
+  }
+};
+export { addFood, listFood, removeFood };
